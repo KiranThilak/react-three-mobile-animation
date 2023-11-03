@@ -24,12 +24,13 @@ const MobileSection = () => {
   );
 
   useEffect(() => {
-    // Apply the GSAP animation to the text
-    gsap.to(".text-animation", {
-      duration: 1.4, // Duration in seconds
-      y: 0, // Target the 'y' property and set it to 0
+    // Animation for the title
+    gsap.from(".text-animation", {
+      duration: 1.4,
+      y: -50, // Start from a specific Y position, e.g., off-screen
+      opacity: 0, // Start with 0 opacity
       stagger: 0.1, // Stagger the animations by 0.1 seconds between elements
-      ease: "power2", // Use the "power2" easing function
+      ease: "power2.inOut", // Use the "power2.inOut" easing function
     });
     // Canvas
     const canvas = renderer.domElement;
@@ -125,15 +126,15 @@ const MobileSection = () => {
   }, [scene, camera, renderer]);
 
   return (
-    <div className="container relative w-full h-full   ">
-      <div className="ml-20 text absolute top-0 left-0 w-1/2 h-full flex flex-col justify-center ">
-        <h1 className="text-5xl font-customFont font-bold text-black text-center pb-5">
-          <span className="text-5xl font-customFont font-bold bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent text-center pb-5">
+    <div className="container relative w-full h-full">
+      <div className="ml-20 text absolute top-0 left-0 w-1/2 h-full flex flex-col justify-center text-animation ">
+        <h1 className="text-5xl font-customFont font-bold text-black text-center pb-5 text-animation">
+          <span className="text-animation text-5xl font-customFont font-bold bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent text-center pb-5">
             Flutter&nbsp;
           </span>
           Development Services
         </h1>
-        <p className="px-0 mb-8 text-lg text-black-600 md:text-xl lg:px-24 text-center">
+        <p className="text-animation px-0 mb-8 text-lg text-black-600 md:text-xl lg:px-24 text-center">
           Powered by Google, Flutter is an open-source UI framework to build
           native-like, flexible, and graphically-enhanced cross-platform apps
           for web, mobile, and desktop using a single codebase

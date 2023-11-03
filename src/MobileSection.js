@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
-
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import gsap from "gsap";
 
@@ -25,11 +24,13 @@ const MobileSection = () => {
   );
 
   useEffect(() => {
-    // Debug
-    /*   setGui(new dat.GUI()); */
-    // Inside your useEffect
-    // Load your BMFont file
-
+    // Apply the GSAP animation to the text
+    gsap.to(".text-animation", {
+      duration: 1.4, // Duration in seconds
+      y: 0, // Target the 'y' property and set it to 0
+      stagger: 0.1, // Stagger the animations by 0.1 seconds between elements
+      ease: "power2", // Use the "power2" easing function
+    });
     // Canvas
     const canvas = renderer.domElement;
     const container = document.getElementById("canvas-container");
@@ -51,10 +52,6 @@ const MobileSection = () => {
         { x: 0.25, y: 0.25, z: 0.25, duration: 1 },
         "-=1"
       );
-
-      /*   gui.add(gltf.scene.rotation, "x").min(0).max(9);
-      gui.add(gltf.scene.rotation, "y").min(0).max(9);
-      gui.add(gltf.scene.rotation, "z").min(0).max(9); */
     });
 
     // Lights
@@ -98,6 +95,7 @@ const MobileSection = () => {
     // Controls
     const controls = new OrbitControls(camera, canvas);
     controls.enableDamping = true;
+    controls.enableZoom = false; // Disable zoom
 
     /**
      * Renderer
@@ -126,7 +124,25 @@ const MobileSection = () => {
     tick();
   }, [scene, camera, renderer]);
 
-  return <div id="canvas-container" />;
+  return (
+    <div className="container relative w-full h-full   ">
+      <div className="ml-20 text absolute top-0 left-0 w-1/2 h-full flex flex-col justify-center ">
+        <h1 className="text-5xl font-customFont font-bold text-black text-center pb-5">
+          <span className="text-5xl font-customFont font-bold bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent text-center pb-5">
+            Flutter&nbsp;
+          </span>
+          Development Services
+        </h1>
+        <p className="px-0 mb-8 text-lg text-black-600 md:text-xl lg:px-24 text-center">
+          Powered by Google, Flutter is an open-source UI framework to build
+          native-like, flexible, and graphically-enhanced cross-platform apps
+          for web, mobile, and desktop using a single codebase
+        </p>
+      </div>
+
+      <div id="canvas-container" />
+    </div>
+  );
 };
 
 export default MobileSection;

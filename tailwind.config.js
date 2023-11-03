@@ -2,7 +2,15 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        customFont: ["Aesthetnova, sans-serif"],
+      },
+      colors: {
+        customBlue: "#4285a6",
+        customBackground: "#F2EFE6",
+      },
+    },
   },
   plugins: [],
 };

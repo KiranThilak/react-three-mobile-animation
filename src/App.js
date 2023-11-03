@@ -3,7 +3,7 @@ import MobileSection from "./MobileSection";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App  ">
       <MobileSection />
     </div>
   );

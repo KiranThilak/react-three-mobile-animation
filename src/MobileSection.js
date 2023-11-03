@@ -128,8 +128,8 @@ const MobileSection = () => {
   return (
     <div className="container relative w-full h-full">
       <div className="ml-20 text absolute top-0 left-0 w-1/2 h-full flex flex-col justify-center text-animation ">
-        <h1 className="text-5xl font-customFont font-bold text-black text-center pb-5 text-animation">
-          <span className="text-animation text-5xl font-customFont font-bold bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent text-center pb-5">
+        <h1 className="text-6xl font-customFont font-bold text-black text-center pb-5 text-animation">
+          <span className="text-animation text-6xl font-customFont font-bold bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent text-center pb-5">
             Flutter&nbsp;
           </span>
           Development Services

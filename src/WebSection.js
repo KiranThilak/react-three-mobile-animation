@@ -6,7 +6,7 @@ import gsap from "gsap";
 
 const gltfLoader = new GLTFLoader();
 
-const MobileSection = () => {
+const WebSection = () => {
   const [scene] = useState(new THREE.Scene());
   const [camera] = useState(
     new THREE.PerspectiveCamera(
@@ -23,7 +23,6 @@ const MobileSection = () => {
     })
   );
   const textRef = useRef(null);
-
   useEffect(() => {
     // Animation for the title
     gsap.from(textRef.current, {
@@ -40,7 +39,7 @@ const MobileSection = () => {
 
     // Load the 3D model
     let tl = gsap.timeline();
-    gltfLoader.load("/mobile-flutter8.gltf", (gltf) => {
+    gltfLoader.load("/mobile-flutter3.gltf", (gltf) => {
       scene.add(gltf.scene);
       gltf.scene.scale.set(0.3, 0.3, 0.3);
       gltf.scene.rotation.set(0, 3.3, 0);
@@ -57,7 +56,7 @@ const MobileSection = () => {
     });
 
     // Lights
-    const pointLight = new THREE.PointLight(0xffffff, 0.1);
+    const pointLight = new THREE.AmbientLight(0xffffff, 1);
     pointLight.position.x = 2;
     pointLight.position.y = 3;
     pointLight.position.z = 4;
@@ -97,7 +96,7 @@ const MobileSection = () => {
     // Controls
     const controls = new OrbitControls(camera, canvas);
     controls.enableDamping = true;
-    controls.enableZoom = true; // Disable zoom
+    controls.enableZoom = false; // Disable zoom
 
     /**
      * Renderer
@@ -150,4 +149,4 @@ const MobileSection = () => {
   );
 };
 
-export default MobileSection;
+export default WebSection;
